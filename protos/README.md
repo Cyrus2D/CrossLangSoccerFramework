@@ -169,3 +169,82 @@ The ```GameModeType``` is an enum that contains the following values:
 - ```GoalieCatch_```
 - ```ExtendHalf```
 - ```MODE_MAX```
+
+
+# Agent Actions
+After receiving the State message, the agent should send a list of actions to the base so the base can execute them and send them to the RCSSServer. The ```PlayerActions``` message contains a list of [```Action```](#Action). 
+
+This list should only contains one Body Action and several other actions. By Body Action, we mean the actions that are related to the agent's body, such as ```Dash```, ```Turn```, ```Kick```, ```Tackle```, ```Catch```, and ```Move```. The agent can only do these actions once in a cycle. The other actions, such as ```TurnNeck```, ```ChangeView```, ```Say```, ```PointTo```, and ```AttentionTo``` can be done multiple times in a cycle. The agent can only do each type of action once in a cycle. For example, the agent can only do one ```Dash``` action in a cycle, while it can ```ChangeView```, ```Say```, and ```TurnNeck``` in that cycle. Note that the agent cannot do the second type actions more than once in a cycle.
+
+In addition to that, the agent can send the some debug actions to the base. These actions are ```Log``` and ```DebugClient```. These actions are useful when you are using the [soccerwindow2](https://github.com/helios-base/soccerwindow2) as the monitor. These actions are for the debug tools of this application.
+
+## Low-Level Actions
+## High-Level Actions
+
+## Action
+The action contains only one action; however, this action can be one of the following actions:
+
+- ```Dash```
+- ```Turn```
+- ```Kick```
+- ```Tackle```
+- ```Catch```
+- ```Move```
+- ```TurnNeck```
+- ```ChangeView```
+- ```Say```
+- ```PointTo```
+- ```PointToOf```
+- ```AttentionTo```
+- ```AttentionToOf```
+- ```Log```
+- ```DebugClient```
+- ```Body_GoToPoint```
+- ```Body_SmartKick```
+- ```Bhv_BeforeKickOff```
+- ```Bhv_BodyNeckToBall```
+- ```Bhv_BodyNeckToPoint```
+- ```Bhv_Emergency```
+- ```Bhv_GoToPointLookBall```
+- ```Bhv_NeckBodyToBall```
+- ```Bhv_NeckBodyToPoint```
+- ```Bhv_ScanField```
+- ```Body_AdvanceBall```
+- ```Body_ClearBall```
+- ```Body_Dribble```
+- ```Body_GoToPointDodge```
+- ```Body_HoldBall```
+- ```Body_Intercept```
+- ```Body_KickOneStep```
+- ```Body_StopBall```
+- ```Body_StopDash```
+- ```Body_TackleToPoint```
+- ```Body_TurnToAngle```
+- ```Body_TurnToBall```
+- ```Body_TurnToPoint```
+- ```Focus_MoveToPoint```
+- ```Focus_Reset```
+- ```Neck_ScanField```
+- ```Neck_ScanPlayers```
+- ```Neck_TurnToBallAndPlayer```
+- ```Neck_TurnToBallOrScan```
+- ```Neck_TurnToBall```
+- ```Neck_TurnToGoalieOrScan```
+- ```Neck_TurnToLowConfTeammate```
+- ```Neck_TurnToPlayerOrScan```
+- ```Neck_TurnToPoint```
+- ```Neck_TurnToRelative```
+- ```View_ChangeWidth```
+- ```View_Normal```
+- ```View_Synch```
+- ```View_Wide```
+- ```HeliosGoalie```
+- ```HeliosGoalieMove```
+- ```HeliosGoalieKick```
+- ```HeliosShoot```
+- ```HeliosChainAction```
+- ```HeliosBasicOffensive```
+- ```HeliosBasicMove```
+- ```HeliosSetPlay```
+- ```HeliosPenalty```
+- ```HeliosCommunicaion```
